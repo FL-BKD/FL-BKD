@@ -101,7 +101,7 @@ if __name__ == '__main__':
     print(net_glob.state_dict().keys())
     net_keys = [*net_glob.state_dict().keys()]
 
-    if args.alg == 'fedbkd' or args.alg == 'fedrep' or args.alg:
+    if args.alg == 'flbkd' or args.alg == 'fedrep' or args.alg:
         if 'cifar' in args.dataset:
             w_glob_keys = [net_glob.weight_keys[i] for i in [4, 3, 0, 1]]
         elif 'mnist' in args.dataset:
@@ -125,7 +125,7 @@ if __name__ == '__main__':
     if 'sent140' not in args.dataset:
         w_glob_keys = list(itertools.chain.from_iterable(w_glob_keys))
 
-    if args.alg == 'fedbkd' or args.alg == 'fedrep' or args.alg == 'lg':
+    if args.alg == 'flbkd' or args.alg == 'fedrep' or args.alg == 'lg':
         num_param_glob = 0
         num_param_local = 0
         for key in net_glob.state_dict().keys():
